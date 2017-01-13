@@ -88,7 +88,8 @@ $query=$query->row_array(0);
 if ($query) {
  if ($query["dia"]||$datos["dia"]&& $query["hora_inicio"]||$datos["horario_inicio"]) {
   $this->grabar->horario_maestro($datos);
-$this->load->view('home_view_altas');
+  $this->asigna_horario($id_maestro);
+//$this->load->view('home_view_altas');
  }
  
 }else{
