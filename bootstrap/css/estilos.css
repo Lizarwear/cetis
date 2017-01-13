@@ -1,0 +1,196 @@
+@import "http://fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,greek-ext,cyrillic-ext,greek,vietnamese,cyrillic,latin-ext";
+
+#sha{
+	width: 400px;
+}
+#avatar{
+width: 150px;
+}
+#logos{
+	width: 800px;
+	margin-right: 90px;
+}
+footer#piePagina{
+	color: black;
+	font-size: 10px;
+}
+div#cabecera_home{
+	height: 100px;
+}
+div#menunav{
+	height: 550px;
+	background-color: #F2F2F2; /*#BDBDBD*/
+}
+div#panel-general{
+	height: 630px;
+	background-color: #F2F2F2; /*#BDBDBD*/
+}
+div#panel-general form#alta_maestro input#nombre_maestro{
+    width: 250px;
+}
+div#panel-general form#alta_maestro input#apellido_paterno_y_materno{
+    width: 200px;
+}
+div#panel-general form#alta_maestro input#rfc_maestro{
+    width: 190px;
+    text-transform: uppercase;
+}
+div#footer{
+	height: 86px;
+	background-color: #1C1C1C;
+}
+img#cabecera-logo{
+	height: 100px;
+}
+div#cabecera_logo{
+	background-color: #F2F2F2;/*#BDBDBD*/
+}
+div#cabecera_titulo{
+	background-color: #F2F2F2;/*#BDBDBD*/
+	height: 100px;
+}
+h2#cabecera_titulo_h2{
+	margin-top: 30px;
+}
+div#cabecera_sesion{
+	background-color: #F2F2F2; /*#BDBDBD*/
+	height: 100px;
+}
+h4#cabecera_sesion_h4{
+	margin-top: 40px;
+}
+.menu_templ {
+    background-color: #999999;/*#999999*/
+    height: 300px;
+    max-width: 600px;
+    position: relative;
+    top: 40px;
+    width: 100%;
+    z-index: 1000;
+}
+ul#css3menu1, ul#css3menu1 ul {
+    border-style: solid;
+    border-width: 0;
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+ul#css3menu1 ul {
+    background-color: #E6E6E6;
+    border-radius: 5px;
+    left: 100%;
+    opacity: 0;
+    padding: 0 3px 3px;
+    position: absolute;
+    top: 0;
+    transition: opacity 0.5s ease 0s;
+    visibility: hidden;
+}
+ul#css3menu1 li:hover > ul {
+    opacity: 1;
+    visibility: visible;
+}
+ul#css3menu1 li {
+    display: block;
+    font-size: 0;
+    position: relative;
+    white-space: nowrap;
+}
+ul#css3menu1 li:hover {
+    z-index: 1;
+}
+ul#css3menu1 ul ul {
+    box-shadow: 0 0 1px #A4A4A4;/*#A4A4A4*/
+    left: 100%;
+    position: absolute;
+    top: 0;
+}
+ul#css3menu1 {
+    border-radius: 0;
+    display: block;
+    float: left;
+    font-size: 0;
+    padding: 0 5px 5px;
+    position: relative;
+    z-index: 999;
+}
+ul#css3menu1 > li {
+    margin: 25px 0 0;
+}
+ul#css3menu1 a:active, ul#css3menu1 a:focus {
+    outline-style: none;
+}
+ul#css3menu1 a {
+    background-repeat: repeat;
+    border-style: none;
+    border-width: 0;
+    color: #ffffff;
+    cursor: pointer;
+    display: block;
+    font: 17px Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    padding: 10px 12px;
+    text-align: left;
+    text-decoration: none;
+    vertical-align: middle;
+}
+ul#css3menu1 ul li {
+    float: none;
+    margin: 3px 0 0;
+}
+ul#css3menu1 ul a {
+    background-color: #A4A4A4;
+    border-radius: 5px;
+    color: #ffffff;
+    font: 14px Open Sans,Helvetica Neue,Helvetica,Arial,sans-serif;
+    padding: 7px;
+    text-align: left;
+    text-decoration: none;
+}
+ul#css3menu1 li:hover > a, ul#css3menu1 li a.pressed {
+    border-style: none;
+    color: #ffffff;
+    text-decoration: none;
+}
+ul#css3menu1 img {
+    border: medium none;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+ul#css3menu1 span {
+    background-image: url("arrowsub.gif");
+    background-position: right center;
+    background-repeat: no-repeat;
+    display: block;
+    overflow: visible;
+    padding-right: 20px;
+}
+ul#css3menu1 ul span {
+    background-image: url("arrowsub.gif");
+    padding-right: 12px;
+}
+ul#css3menu1 ul li:hover > a, ul#css3menu1 ul li a.pressed {
+    background-color: #585858;
+    color: #ffffff;
+    text-decoration: none;
+}
+ul#css3menu1 li.topmenu > a {
+    background-color: #6E6E6E;
+    border-radius: 5px;
+}
+ul#css3menu1 li.topmenu:hover > a, ul#css3menu1 li.topmenu a.pressed {
+    background-color: #585858;
+}
+img#panel-general-logo{
+	height: 560px;
+	width: 1240px;
+}
+div#timetotime input{
+    width: 85px;
+}
+button#boton{
+    margin-left: 1080px;
+    margin-top: -30px;
+    text-align: right;
+    font-size: 20px;
+    float: left;
+}

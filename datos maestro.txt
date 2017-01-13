@@ -1,0 +1,15 @@
+nombre
+rfc
+maestro por hora->[cuantas horas (20,30,40)] o asignatura(horas completas o compactadas)
+clave presupuestal->[hasta 3 campos]
+sexo
+curp
+email
+domicilio
+teléfono particular
+función: docente, técnico docente, administrativo->[que tipo de..], con descarga
+grado academico->[Lic,Doc] definir los niveles de grado academico y a cada uno definir si es titulado(fecha de titulación) o en curso.
+materias que puede impartir
+tipo: base, temporal
+disponibilidad de horarios
+opcional[si quiere modulos] abrir las materias que lleva e indicar a cuales les quiere asignar modulos

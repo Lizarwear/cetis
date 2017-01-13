@@ -1,0 +1,5 @@
+clave_materia
+nombre
+horas
+que maestro la imparte
+tipo: basica, propedeutica, profesional
