@@ -84,19 +84,33 @@ $query = $this->db->get();
 $query=$query->row_array(0);
 //comparacion solo por hora ocupada :'v
 
+   $this->db->select('*');
+ $this->db->from('horario_maestro');
+ $this->db->where('horario_maestro.id_maestro',$datos["id_maestro"]);
+$query2 = $this->db->get();
+$query2=$query2->row_array(0);
 //
-if ($query) {
- if ($query["dia"]||$datos["dia"]&& $query["hora_inicio"]||$datos["horario_inicio"]) {
-  $this->grabar->horario_maestro($datos);
-  $this->asigna_horario($id_maestro);
-//$this->load->view('home_view_altas');
- }
- 
-}else{
-$this->grabar->horario_maestro($datos);
-$this->load->view('home_view_altas');
-}
+if ($datos["id_materia"]||'') {
 
+ 
+
+      if ($query) {
+       if ($query["dia"]==$datos["dia"] and $query2["horario_inicio"]==$datos["horario_inicio"]) {
+       // $this->grabar->horario_maestro($datos);
+        $this->asigna_horario($id_maestro);
+
+       }
+       $this->grabar->horario_maestro($datos);
+       $this->asigna_horario($id_maestro);
+      }
+      else{
+        $this->grabar->horario_maestro($datos);
+       $this->asigna_horario($id_maestro);
+      }
+
+}else{
+   $this->asigna_horario($id_maestro);
+}
 
    //
 

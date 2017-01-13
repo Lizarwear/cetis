@@ -45,6 +45,18 @@ return $query->row_array(0);
  	return $query->result_array();
  }
 
+
+
+ public  function  sacar_materias($id_maestro)
+ {
+ $this->db->select('*');
+ $this->db->from('horario_maestro');
+ $this->db->where('horario_maestro.id_maestro',$id_maestro);
+$query = $this->db->get();
+return $query->result_array();
+ }
+
+
  public  function  inner_materia($id_maestro)
  {
  $this->db->select('*');
