@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/bootstrap/css/bootstrap.min.css">
-		 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
 		 <script src="<?php echo base_url(); ?>/bootstrap/js/jquery.min.js"></script>
 	
 	<link rel="stylesheet" href="<?php echo base_url(); ?>/bootstrap/css/estilos.css">

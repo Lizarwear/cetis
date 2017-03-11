@@ -8,10 +8,12 @@
 			<?php
 				foreach ($nombre as $key => $value) {
 				    ?>
-					<h2>Asignar horario a <?php echo $value["nombre_completo"]; ?></h2>
+					<h2>Asignar horario a <?php echo $value["nombre_completo"]; ?> </h2>
 					<?php 	
 					    }
 					?>
+					
+					
 			</center>
 			
 			<center>
@@ -19,7 +21,27 @@
 			<fieldset>
 			<center>
 			<form action="../addHorario_maestra/<?php echo $id_maestro; ?>" method="POST">	
+			<label>Clave presupuestal</label>
+					<select name="clave_horas_" id="clave_horas_"> 
+
+					<?php foreach ($claves as $key => $value) {
+						echo "<option selected disabled>Seleccione una opción</option>";
+						echo "<option>".$value["clave_presupuestal_1"]."</option>";
+						echo "<option>".$value["clave_presupuestal_2"]."</option>";
+						echo "<option>".$value["clave_presupuestal_3"]."</option>";
+
+					} ?>
+					
+					
+						
+						
+					</select>
+					<input id="hora_total_" value="">Horas</input>
+					<br>
+				
+					
 			<label for="nombre_materia">Materia</label>
+			
 
 				  <?php 
 
@@ -53,15 +75,7 @@
 
 
 
-<!-- 
-<script>
-$( ".qq" )
-  .keyup(function() {
-    var value = $( this ).val();
-    $( ".qq3" ).text( value );
-  })
-  .keyup();
-</script> -->
+
 						
 
 
@@ -132,6 +146,7 @@ $( ".qq" )
 					</tr>
 				</table>
 				<br>
+				<div style=" width:50%; margin-bottom:10px;">	
 				<table border="1" style="margin-top: -10px;">
 					<tr>
 						<td style="width: 105px;">
@@ -898,7 +913,7 @@ $( ".qq" )
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '13:00:00'){
+										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
 											echo $value["semestre"].$value["grupo"];
 										}else{
 											echo "";
@@ -911,7 +926,7 @@ $( ".qq" )
 							<center>
 									<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '13:00:00'){
+										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
 											echo $value["semestre"].$value["grupo"];
 										}else{
 											echo "";
@@ -924,7 +939,7 @@ $( ".qq" )
 							<center>
 									<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '13:00:00'){
+										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
 											echo $value["semestre"].$value["grupo"];
 										}else{
 											echo "";
@@ -937,7 +952,7 @@ $( ".qq" )
 							<center>
 									<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '13:00:00'){
+										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
 											echo $value["semestre"].$value["grupo"];
 										}else{
 											echo "";
@@ -950,7 +965,7 @@ $( ".qq" )
 							<center>
 									<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '13:00:00'){
+										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
 											echo $value["semestre"].$value["grupo"];
 										}else{
 											echo "";
@@ -967,11 +982,12 @@ $( ".qq" )
 								13:00
 							</center>
 						</td>
+
 						<td>
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '13:00:00'){
+										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -984,7 +1000,7 @@ $( ".qq" )
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '13:00:00'){
+										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -997,7 +1013,7 @@ $( ".qq" )
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '13:00:00'){
+										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -1010,7 +1026,7 @@ $( ".qq" )
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '13:00:00'){
+										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -1023,7 +1039,7 @@ $( ".qq" )
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '13:00:00'){
+										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -1032,8 +1048,163 @@ $( ".qq" )
 					?>
 							</center>
 						</td>
+						<tr>
+						<td>
+							<center>
+								13:00 <br> 
+								13:50
+							</center>
+						</td>
+						
+						<td>
+							<center>
+								<?php
+									foreach ($horario_maestro as $key => $value) {
+										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:50:00'){
+											echo $value["NombreMateria"];
+										}else{
+											echo "";
+										}
+				  				}
+					?>
+							</center>
+						</td>
+						<td>
+							<center>
+								<?php
+									foreach ($horario_maestro as $key => $value) {
+										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:50:00'){
+											echo $value["NombreMateria"];
+										}else{
+											echo "";
+										}
+				  				}
+					?>
+							</center>
+						</td>
+						<td>
+							<center>
+								<?php
+									foreach ($horario_maestro as $key => $value) {
+										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
+											echo $value["NombreMateria"];
+										}else{
+											echo "";
+										}
+				  				}
+					?>
+							</center>
+						</td>
+						<td>
+							<center>
+								<?php
+									foreach ($horario_maestro as $key => $value) {
+										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
+											echo $value["NombreMateria"];
+										}else{
+											echo "";
+										}
+				  				}
+					?>
+							</center>
+						</td>
+						<td>
+							<center>
+								<?php
+									foreach ($horario_maestro as $key => $value) {
+										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
+											echo $value["NombreMateria"];
+										}else{
+											echo "";
+										}
+				  				}
+					?>
+							</center>
+						</td>
+					<!-- 	<- -->
+					<tr>
+						<td>
+							<center>
+								13:50 <br> 
+								14:40
+							</center>
+						</td>
+						
+						<td>
+							<center>
+								<?php
+									foreach ($horario_maestro as $key => $value) {
+										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:50:00'){
+											echo $value["NombreMateria"];
+										}else{
+											echo "";
+										}
+				  				}
+					?>
+							</center>
+						</td>
+						<td>
+							<center>
+								<?php
+									foreach ($horario_maestro as $key => $value) {
+										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:50:00'){
+											echo $value["NombreMateria"];
+										}else{
+											echo "";
+										}
+				  				}
+					?>
+							</center>
+						</td>
+						<td>
+							<center>
+								<?php
+									foreach ($horario_maestro as $key => $value) {
+										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
+											echo $value["NombreMateria"];
+										}else{
+											echo "";
+										}
+				  				}
+					?>
+							</center>
+						</td>
+						<td>
+							<center>
+								<?php
+									foreach ($horario_maestro as $key => $value) {
+										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
+											echo $value["NombreMateria"];
+										}else{
+											echo "";
+										}
+				  				}
+					?>
+							</center>
+						</td>
+						<td>
+							<center>
+								<?php
+									foreach ($horario_maestro as $key => $value) {
+										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
+											echo $value["NombreMateria"];
+										}else{
+											echo "";
+										}
+				  				}
+					?>
+							</center>
+						</td>
+					<!-- 	<- -->
+					<!-- 	<- -->
+				
+
 					</tr>
 				</table>
+				</div>
 			</div>
 </div>
-<?php  include 'home/home_view_pie.php'; ?>
+
+
+<?php  //include 'home/home_view_pie.php'; ?>
+

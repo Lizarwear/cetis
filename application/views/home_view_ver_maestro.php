@@ -51,10 +51,15 @@
 
 </fieldset>
 </center>
-	
+	<?php if ($materias==null) {
+	echo "<h3 id='rf' value='1' >Sin materias asignadas </h3>";
+} ?>
 <table border = "1">
 		<tr><td style="background-color:#0EBEBA" color="black";><b>Materias</b></td>  
-<?php foreach ($materias as $key => $value): ?>
+		
+<?php foreach ($materias as $key => $value):
+
+ ?>
 	
 		<td ><?php echo $value["materia_nombre"]; ?></td>
 

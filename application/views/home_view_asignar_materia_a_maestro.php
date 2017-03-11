@@ -9,23 +9,36 @@
 					
 					<div class="form-group">
 				    	<label for="nombre_materia">Maestro</label>
+
 				  
 
 				    	
-				    	<select  name="maestros">
+				    	<select  name="maestros" id="maestro___">
+				    		<option selected disabled>Seleccione un maestro</option>
 				    	<?php 
 				    	//while ($row = mysql_fetch_array($result)) {
 				    		
 				    	foreach ($maestro as $key => $value) {
-				    		echo "	<option value=".$value["id_maestro"].">".$value["nombre"]."_".$value["apellido_paterno"]."_".$value["apellido_materno"]."</option>";
+				    		echo "	<option value=".$value["id_maestro"].">".$value["nombre"]." ".$value["apellido_paterno"]." ".$value["apellido_materno"]."</option>";
+
 				    	}
 				    	//echo "	<option value=".$row["id_area"].">".$row["nombre"]."</option>";
 //}
-				    	
-				    	
-				    	
+				    
 				    		 ?>
 				    	</select>
+				  	</div>
+				 
+				  	<div>
+				  	<label>Clave presupuestal</label>
+				  	<select  name="clave_presupuestal" id="cla__">
+				  	
+				  	<option selected disabled>Seleccione una Clave</option>
+				  	<option id="cla__1" value=""></option>
+				  	<option id="cla__2" value=""></option>
+				  	<option id="cla__3" value=""></option>
+				  	</select>
+
 				  	</div>
 
 

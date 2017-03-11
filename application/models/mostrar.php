@@ -19,6 +19,7 @@ return $query->result_array();
  {
  $this->db->where('id_maestro',$id_maestro);
  $query2 = $this->db->get('maestro');
+ 
 $query2=$query2->row_array(0);
 $si=$query2["horario_inicio"];
 $sf=$query2["horario_final"];
@@ -28,10 +29,15 @@ $sf=$query2["horario_final"];
  $this->db->from('horas_clase');
  $this->db->where("hora BETWEEN '".$si."' AND '".$sf."'"); 
 $query = $this->db->get();
-
 return $query->result_array();
  }
 //
+//obtener claves de los maestros
+public  function get_claves(){
+
+}
+
+
 
  public  function  get_detalle_maestro($id_maestro)
  {
@@ -42,6 +48,12 @@ return $query->row_array(0);
 
  public function get_nombre_maestro($id_maestro){
  	$query=$this->db->query("select CONCAT(nombre,' ',apellido_paterno,' ',apellido_materno)as nombre_completo, CONCAT(clave_presupuestal_1,' ',clave_presupuestal_2,' ',clave_presupuestal_3)as clavepresupuestal from maestro where id_maestro = ".$id_maestro);
+ 	return $query->result_array();
+ }
+
+ public function get_claves_horas($id_maestro){
+ 	
+ 	$query=$this->db->query("SELECT clave_presupuestal_1,clave_presupuestal_2,clave_presupuestal_3 FROM maestro WHERE id_maestro=".$id_maestro);
  	return $query->result_array();
  }
 

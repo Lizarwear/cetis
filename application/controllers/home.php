@@ -53,9 +53,17 @@ class Home extends CI_Controller {
   $q["hora"]=$this->mostrar->horario_disponible($id_maestro);
   $q["id_maestro"]=$id_maestro;
   $q["horario_maestro"]=$this->mostrar->get_horario_maestro($id_maestro);
+ // $q["restantes"]=$this->mostrar->get_horas_res($id_maestro);
+  $q["claves"]=$this->mostrar->get_claves_horas($id_maestro);
+
+
+
+  
 $this->load->view('home_view_asigna_horario',$q);
  }
 
+
+//horario agregar horas restantes
  function addHorario_maestra($id_maestro){
 //
   $id_maestro=$id_maestro;
@@ -65,6 +73,12 @@ $this->load->view('home_view_asigna_horario',$q);
     $datos["grupo"] = $this->input->post('grupo');
      $datos["dia"] = $this->input->post('dia');
       $datos["semestre"] = $this->input->post('semestre');
+      $datos["clave_presupuestal"] = $this->input->post('clave_horas_');
+      $punto=strpos($datos["clave_presupuestal"],'.');
+      $final=strlen($datos["clave_presupuestal"]);
+      $oi=  substr($datos["clave_presupuestal"], $punto+1, $final); 
+    
+      //total de horas que puede dar con esa clave presupuestal
      
     
 $ww=$this->input->post('horario_inicio');
@@ -76,45 +90,39 @@ $r=$this->sumar($ww, $w);
    $datos["horario_final"] = $r;
    //
 
-   $this->db->select('*');
- $this->db->from('horario_maestro');
- $this->db->join('maestro', 'horario_maestro.id_maestro = maestro.id_maestro');
- $this->db->where('horario_maestro.horario_inicio',$datos["horario_inicio"]);
-$query = $this->db->get();
-$query=$query->row_array(0);
-//comparacion solo por hora ocupada :'v
-
-   $this->db->select('*');
- $this->db->from('horario_maestro');
- $this->db->where('horario_maestro.id_maestro',$datos["id_maestro"]);
-$query2 = $this->db->get();
-$query2=$query2->row_array(0);
-//
-if ($datos["id_materia"]||'') {
+$this->db->select('*');
+$this->db->from('horario_maestro as H');
+$this->db->where('H.horario_inicio',$datos["horario_inicio"]);
+$this->db->where('H.dia',$datos["dia"]);
 
  
+$query1 = $this->db->get();
+$resultado = $query1->result();
+$popo=count($resultado);
+   
+// $query=$query->row_array(0);
+// $di=$datos["horario_inicio"];
+if ($datos['id_materia']!='') {
+  
 
-      if ($query) {
-       if ($query["dia"]==$datos["dia"] and $query2["horario_inicio"]==$datos["horario_inicio"]) {
-       // $this->grabar->horario_maestro($datos);
-        $this->asigna_horario($id_maestro);
 
-       }
-       $this->grabar->horario_maestro($datos);
-       $this->asigna_horario($id_maestro);
-      }
-      else{
-        $this->grabar->horario_maestro($datos);
-       $this->asigna_horario($id_maestro);
-      }
+if ($resultado) {
+echo '<script language="javascript">alert("Horario ocupado");</script>'; 
+$this->asigna_horario($id_maestro);
 
 }else{
-   $this->asigna_horario($id_maestro);
+     $this->grabar->horario_maestro($datos);
+     echo '<script language="javascript">alert("Horario asignado");</script>'; 
+       $this->asigna_horario($id_maestro);
 }
 
-   //
+}
 
 
+
+     // $this->asigna_horario($id_maestro);
+
+//comparacion solo por hora ocupada :'v
 
   //$this->load->view('home_view_altas');
  } 
@@ -153,11 +161,17 @@ $q["materias"]=$this->mostrar->inner_materia($id_maestro);
   $this->load->view('home_view_areas');
  }
 
+
+// problema 1
+ //asignar materias a clave presupuestal
  function asignar_materia(){
   $q["materias"]=$this->mostrar->get_materias();
   $q["maestro"]=$this->mostrar->get_maestro();
   $this->load->view('home_view_asignar_materia_a_maestro',$q);
  }
+ //
+
+
 
   function materias(){
   //$this->load->view('home_view_altas_materias');
@@ -698,7 +712,7 @@ $q["materias"]=$this->mostrar->inner_materia($id_maestro);
     $this->grabar->materias($datos);
     ?>
         <script type="text/javascript">
-          alert("Se ha agregado una nueva aula");
+          alert("Se ha agregado una nueva materia");
         </script>
     <?php
         $this->asignar_materia();
@@ -738,6 +752,7 @@ $q["materias"]=$this->mostrar->inner_materia($id_maestro);
   function addMaestro_materia(){
      $datos["id_materia"] = $this->input->post('materia');
   $datos["id_maestro"] = $this->input->post('maestros');
+   $datos["clave_presupuestal"] = $this->input->post('clave_presupuestal');
  
    
 
@@ -745,7 +760,7 @@ $q["materias"]=$this->mostrar->inner_materia($id_maestro);
     $this->grabar->materias($datos);
     ?>
         <script type="text/javascript">
-          alert("Se ha agregado una nueva area");
+          alert("Se ha asignado una materia al maestro");
         </script>
     <?php
 
@@ -937,7 +952,7 @@ $q["materias"]=$this->mostrar->inner_materia($id_maestro);
   $this->pdf->SetXY(35,$y);
   $this->pdf->Cell(250,8,'',1,'C','0');
   $this->pdf->SetXY(-460,-179);
-  $this->pdf->Cell(0,5,'ELIZABETH BRICIO ROBLES',0,0,'C');
+  $this->pdf->Cell(0,5,'ELIZABETH BRICIO ROBLESsss',0,0,'C');
   $this->pdf->SetXY(-456,-176);
   $this->pdf->Cell(0,5,'11301 2798 E4623 00 0 0000015',0,0,'C');
   $this->pdf->SetXY(-70,-176);
