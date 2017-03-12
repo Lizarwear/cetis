@@ -36,7 +36,7 @@
 						
 						
 					</select>
-					<input id="hora_total_" value="">Horas</input>
+					<input id="hora_total_" value="" readonly disabled size="3">Horas
 					<br>
 				
 					
@@ -57,7 +57,7 @@
 				    	foreach ($materias as $key => $value) {
 				    		
 						 ?>
-						<option data-semestre="<?php echo $value["semestre"]?>"
+						<option 
 						   value=<?php echo $value["id_materia"].">" ?>   <?php echo $value["materia_nombre"]; ?>  </option>	
 					
 
@@ -119,12 +119,12 @@
 
 
 		</select>
-<button type="submit" class="btn btn-primary" id="boton" >Agregar</button>
+<button type="submit" class="btn btn-primary" id="boton" style="margin-top:-55px;" disabled ">Agregar</button>
 </form>
 				 </center>
 			</div>
 			<div>
-				<table border="1" style="margin-top: 17.2px;">
+				<table border="1" style="margin-top: -17.8px;">
 					<tr>
 						<td style=" width: 105px;">
 							<center>
@@ -146,8 +146,8 @@
 					</tr>
 				</table>
 				<br>
-				<div style=" width:50%; margin-bottom:10px;">	
-				<table border="1" style="margin-top: -10px;">
+				<div style=" width:100%; margin-bottom:10px;">	
+				<table border="1" style="margin-top: -20px;">
 					<tr>
 						<td style="width: 105px;">
 							
@@ -1060,7 +1060,7 @@
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:50:00'){
+										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '13:00:00' && $value["horario_final"] == '13:50:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -1073,7 +1073,7 @@
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:50:00'){
+										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '13:00:00' && $value["horario_final"] == '13:50:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -1086,7 +1086,7 @@
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
+										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '13:00:00' && $value["horario_final"] == '13:50:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -1099,7 +1099,7 @@
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
+										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '13:00:00' && $value["horario_final"] == '13:50:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -1112,7 +1112,7 @@
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
+										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '13:00:00' && $value["horario_final"] == '13:50:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -1134,7 +1134,7 @@
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:50:00'){
+										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '13:50:00' && $value["horario_final"] == '14:40:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -1147,7 +1147,7 @@
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:50:00'){
+										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '13:50:00' && $value["horario_final"] == '14:40:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -1160,7 +1160,7 @@
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
+										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '13:50:00' && $value["horario_final"] == '14:40:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -1173,7 +1173,7 @@
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
+										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '13:50:00' && $value["horario_final"] == '14:40:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -1186,7 +1186,7 @@
 							<center>
 								<?php
 									foreach ($horario_maestro as $key => $value) {
-										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
+										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '13:50:00' && $value["horario_final"] == '14:40:00'){
 											echo $value["NombreMateria"];
 										}else{
 											echo "";
@@ -1206,5 +1206,5 @@
 </div>
 
 
-<?php  //include 'home/home_view_pie.php'; ?>
+<?php  include 'home/home_view_pie.php'; ?>
 

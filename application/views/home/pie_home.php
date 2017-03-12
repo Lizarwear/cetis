@@ -71,7 +71,7 @@ $(document).ready(function(){
 				  //	alert();
 				 $('#clave_horas_').val();
 				var clave= $('#clave_horas_').val();
-				console.log(clave);
+				//	console.log(clave);
 
 
 				var info={clave: clave};
@@ -82,12 +82,47 @@ $(document).ready(function(){
 						success: function (data) {
 							 var datas= JSON.parse(data);
 							 console.log(datas[0][2]);
-							 document.getElementById("hora_total_").value = datas[0][2];
-							document.getElementById("hora_total_").text = datas[0][2];
+							 document.getElementById("hora_total_").value = datas[0][0];
+							document.getElementById("hora_total_").text = datas[0][0];
 							
 
 						}
 					});//fin ajax
+				 });
+				
+					
+					
+
+	</script>
+
+
+
+	<script type="text/javascript">
+				  $('#select_materia').change(function(){
+				  //	alert();
+			//	 $('#select_materia').val();
+
+			// var materia = document.getElementById('#select_materia').value;
+				var materia= $('#select_materia').val(	);
+
+				console.log(materia);
+
+			
+				var info={id_materia: id_materia};
+				
+				// $.ajax({
+				// 		url:'../../../clases/rutas.php',
+				// 		type: 'post',
+				// 		data: {action: 'clave', info: info},
+				// 		success: function (data) {
+				// 			 var datas= JSON.parse(data);
+				// 			 console.log(datas[0][2]);
+				// 			 document.getElementById("hora_total_").value = datas[0][0];
+				// 			document.getElementById("hora_total_").text = datas[0][0];
+							
+
+				// 		}
+				// 	});//fin ajax
 				 });
 				
 					

@@ -24,8 +24,11 @@ $r=$Main->query_row($query);
 	$info=$_POST["info"];
 	
 	$clave=$info["clave"];
-	$query="SELECT m.id_materia,m.materia_nombre,SUM(m.hora) FROM horario_maestro as hm  INNER JOIN materias as m on hm.id_materia=m.id_materia WHERE hm.clave_presupuestal='$clave'";
+	$query="SELECT count(m.id_materia) as horas,m.materia_nombre,m.hora FROM horario_maestro as hm  INNER JOIN materias as m on hm.id_materia=m.id_materia WHERE hm.clave_presupuestal='$clave'";
+	
 	$r=$Main->query_row($query);
+
+
 	
 	echo json_encode($r);
 
