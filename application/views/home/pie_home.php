@@ -73,6 +73,8 @@ $(document).ready(function(){
 				var clave= $('#clave_horas_').val();
 				//	console.log(clave);
 
+			
+
 
 				var info={clave: clave};
 				$.ajax({
@@ -81,10 +83,22 @@ $(document).ready(function(){
 						data: {action: 'clave', info: info},
 						success: function (data) {
 							 var datas= JSON.parse(data);
-							 console.log(datas[0][2]);
+							// console.log(datas[0][2]);
+							var hora_t=datas[0][0];
 							 document.getElementById("hora_total_").value = datas[0][0];
 							document.getElementById("hora_total_").text = datas[0][0];
-							
+							var punto= clave.indexOf('.');
+							var fin=clave.length;
+							var hora=clave.substr(punto+1, fin);
+							if (hora==hora_t) {
+								alert('las horas de la clave han sido asignadas');
+								
+									$('#boton_qq').prop('disabled', true);
+
+							}else{
+									
+											$('#boton_qq').prop('disabled', false);
+							}
 
 						}
 					});//fin ajax
@@ -103,26 +117,33 @@ $(document).ready(function(){
 			//	 $('#select_materia').val();
 
 			// var materia = document.getElementById('#select_materia').value;
-				var materia= $('#select_materia').val(	);
+				var materia=$('#select_materia').val();
 
-				console.log(materia);
-
-			
-				var info={id_materia: id_materia};
 				
-				// $.ajax({
-				// 		url:'../../../clases/rutas.php',
-				// 		type: 'post',
-				// 		data: {action: 'clave', info: info},
-				// 		success: function (data) {
-				// 			 var datas= JSON.parse(data);
-				// 			 console.log(datas[0][2]);
-				// 			 document.getElementById("hora_total_").value = datas[0][0];
-				// 			document.getElementById("hora_total_").text = datas[0][0];
+				var clave =$('#clave_horas_').val();
+			//console.log(clave);
+				var info={id_materia: materia, clavep: clave};
+				
+				$.ajax({
+						url:'../../../clases/rutas.php',
+						type: 'post',
+						data: {action: 'mate', info: info},
+						success: function (data) {
 							
+							 console.log(data);
+							if (data=='1') {
+								alert('las horas de la Materia han sido asignadas');
+								
+									$('#boton_qq').prop('disabled', true);
 
-				// 		}
-				// 	});//fin ajax
+							}else{
+									
+											$('#boton_qq').prop('disabled', false);
+							}
+
+
+						}
+					});//fin ajax
 				 });
 				
 					

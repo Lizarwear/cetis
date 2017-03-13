@@ -33,6 +33,29 @@ $r=$Main->query_row($query);
 	echo json_encode($r);
 
 		break;
+		//case donde vere si la materia tiene ya su limite
+		case 'mate':
+			$info=$_POST["info"];
+	
+	$id_materia=$info["id_materia"];
+	$clave=$info["clavep"];
+	$query="SELECT COUNT(id_maestro) as veces  FROM horario_maestro WHERE id_materia=$id_materia and clave_presupuestal='$clave'";
+	
+	$r=$Main->query_row($query);
+	$horass=$r[0][0];
+	$query2="SELECT hora FROM materias WHERE id_materia=$id_materia";
+	$r2=$Main->query_row($query2);
+	$horas_materia=$r2[0][0];
+	
+	if ($horass==$horas_materia) {
+		echo json_encode(1);
+	}else{echo json_encode(2);}
+	
+
+
+	
+	// echo json_encode($r);
+			break;
 	default:
 		# code...
 		break;

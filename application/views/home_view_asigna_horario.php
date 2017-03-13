@@ -3,7 +3,7 @@
  ?>
 
 
-		<div class="col-md-10" id="panel-general">
+		<div class="col-md-10" id="panel-general" style=" margin-top:-31px; width:80%; margin-right:-10%; ">
 			<center>
 			<?php
 				foreach ($nombre as $key => $value) {
@@ -57,7 +57,7 @@
 				    	foreach ($materias as $key => $value) {
 				    		
 						 ?>
-						<option 
+						<option data-semestre="<?php echo $value["semestre"] ?>"
 						   value=<?php echo $value["id_materia"].">" ?>   <?php echo $value["materia_nombre"]; ?>  </option>	
 					
 
@@ -119,12 +119,12 @@
 
 
 		</select>
-<button type="submit" class="btn btn-primary" id="boton" style="margin-top:-55px;" disabled ">Agregar</button>
+<button type="submit" class="btn btn-primary" id="boton_qq" style="margin-top:-55px; margin-right:-74px;"  ">Agregar</button>
 </form>
 				 </center>
 			</div>
 			<div>
-				<table border="1" style="margin-top: -17.8px;">
+				<table border="1" style="margin-top: -15.8px;">
 					<tr>
 						<td style=" width: 105px;">
 							<center>
@@ -190,6 +190,8 @@
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '07:30:00' && $value["horario_final"] == '08:20:00'){
 											echo $value["semestre"].$value["grupo"];
+											
+
 										}else{
 											echo "";
 										}
@@ -262,7 +264,9 @@
 									<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '07:30:00' && $value["horario_final"] == '08:20:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
+											
 										}else{
 											echo "";
 										}
@@ -275,7 +279,8 @@
 									<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '07:30:00' && $value["horario_final"] == '08:20:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -288,7 +293,8 @@
 									<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '07:30:00' && $value["horario_final"] == '08:20:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -301,7 +307,8 @@
 									<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '07:30:00' && $value["horario_final"] == '08:20:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -314,7 +321,8 @@
 									<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '07:30:00' && $value["horario_final"] == '08:20:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -407,7 +415,8 @@
 									<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '08:20:00' && $value["horario_final"] == '09:10:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -420,7 +429,8 @@
 									<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '08:20:00' && $value["horario_final"] == '09:10:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -433,7 +443,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '08:20:00' && $value["horario_final"] == '09:10:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -446,7 +457,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '08:20:00' && $value["horario_final"] == '09:10:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -459,7 +471,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '08:20:00' && $value["horario_final"] == '09:10:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -552,7 +565,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '09:10:00' && $value["horario_final"] == '10:00:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -565,7 +579,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '09:10:00' && $value["horario_final"] == '10:00:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -578,7 +593,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '09:10:00' && $value["horario_final"] == '10:00:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -591,7 +607,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '09:10:00' && $value["horario_final"] == '10:00:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -604,7 +621,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '09:10:00' && $value["horario_final"] == '10:00:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -697,7 +715,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '10:30:00' && $value["horario_final"] == '11:20:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -710,7 +729,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '10:30:00' && $value["horario_final"] == '11:20:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -723,7 +743,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '10:30:00' && $value["horario_final"] == '11:20:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -736,7 +757,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '10:30:00' && $value["horario_final"] == '11:20:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -749,7 +771,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '10:30:00' && $value["horario_final"] == '11:20:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -842,7 +865,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '11:20:00' && $value["horario_final"] == '12:10:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -855,7 +879,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '11:20:00' && $value["horario_final"] == '12:10:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -868,7 +893,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '11:20:00' && $value["horario_final"] == '12:10:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -881,7 +907,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '11:20:00' && $value["horario_final"] == '12:10:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -894,7 +921,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '11:20:00' && $value["horario_final"] == '12:10:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -988,7 +1016,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1001,7 +1030,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1014,7 +1044,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1027,7 +1058,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1040,7 +1072,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '12:10:00' && $value["horario_final"] == '01:00:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1061,7 +1094,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '13:00:00' && $value["horario_final"] == '13:50:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1074,7 +1108,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '13:00:00' && $value["horario_final"] == '13:50:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1087,7 +1122,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '13:00:00' && $value["horario_final"] == '13:50:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1100,7 +1136,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '13:00:00' && $value["horario_final"] == '13:50:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1113,7 +1150,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '13:00:00' && $value["horario_final"] == '13:50:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1135,7 +1173,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'LUNES' && $value["horario_inicio"] == '13:50:00' && $value["horario_final"] == '14:40:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1148,7 +1187,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MARTES' && $value["horario_inicio"] == '13:50:00' && $value["horario_final"] == '14:40:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1161,7 +1201,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'MIERCOLES' && $value["horario_inicio"] == '13:50:00' && $value["horario_final"] == '14:40:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1174,7 +1215,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'JUEVES' && $value["horario_inicio"] == '13:50:00' && $value["horario_final"] == '14:40:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
@@ -1187,7 +1229,8 @@
 								<?php
 									foreach ($horario_maestro as $key => $value) {
 										if($value["dia"] == 'VIERNES' && $value["horario_inicio"] == '13:50:00' && $value["horario_final"] == '14:40:00'){
-											echo $value["NombreMateria"];
+											echo $value["NombreMateria"]."       ";
+											echo "<span class='glyphicon glyphicon-floppy-remove'>";
 										}else{
 											echo "";
 										}
