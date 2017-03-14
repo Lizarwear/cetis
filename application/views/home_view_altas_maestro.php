@@ -89,16 +89,16 @@
 				    </select>
 				    <div style="float: right;">
 					    <div id="clave1" style="display:none;">
-							<input type="text" class="form-control" id="clave_presupuestal_1" name="clave1_1" style="width: 165px;" placeholder="Clave Presupuestal 1">
+							<input type="text" class="form-control" id="clave_presupuestal_1" name="clave1_1" style="width: 200px;" placeholder="Clave Presupuestal 1.Horas">
 						</div>
 						<div id="clave2" style="display:none;">
-							<input type="text" class="form-control" id="clave_presupuestal_1" name="clave1_2" style="width: 165px;" placeholder="Clave Presupuestal 1">
-							<input type="text" class="form-control" id="clave_presupuestal_2" name="clave2_2" style="width: 165px;" placeholder="Clave Presupuestal 2">
+							<input type="text" class="form-control" id="clave_presupuestal_1" name="clave1_2" style="width: 200px;" placeholder="Clave Presupuestal 1.Horas">
+							<input type="text" class="form-control" id="clave_presupuestal_2" name="clave2_2" style="width: 200px;" placeholder="Clave Presupuestal 2.Horas">
 						</div>
 						<div id="clave3" style="display:none;">
-							<input type="text" class="form-control" id="clave_presupuestal_1" name="clave1_3" style="width: 165px;" placeholder="Clave Presupuestal 1">
-							<input type="text" class="form-control" id="clave_presupuestal_2" name="clave2_3" style="width: 165px;" placeholder="Clave Presupuestal 2">
-							<input type="text" class="form-control" id="clave_presupuestal_3" name="clave3_3" style="width: 165px;" placeholder="Clave Presupuestal 3">
+							<input type="text" class="form-control" id="clave_presupuestal_1" name="clave1_3" style="width: 200px;" placeholder="Clave Presupuestal 1.Horas">
+							<input type="text" class="form-control" id="clave_presupuestal_2" name="clave2_3" style="width: 200px;" placeholder="Clave Presupuestal 2.Horas">
+							<input type="text" class="form-control" id="clave_presupuestal_3" name="clave3_3" style="width: 200px;" placeholder="Clave Presupuestal 3.Horas">
 						</div>
 					</div>
 				  </div>
