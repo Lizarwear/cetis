@@ -100,6 +100,10 @@ return $query->result_array();
  	return $query->result_array();
  }
 
+ public function get_horario_maestro2($id_maestro){
+ 	$query = $this->db->query("select M.materia_nombre as NombreMateria, HM.horario_inicio, HM.horario_final, HM.grupo, HM.dia, HM.semestre from horario_maestro HM inner join(select id_materia, materia_nombre from materias)as M on M.id_materia=HM.id_materia where id_maestro = ".$id_maestro);
+ 	return $query->result();
+ }
 }
 
 

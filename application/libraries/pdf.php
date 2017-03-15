@@ -4,9 +4,10 @@
  
     //Extendemos la clase Pdf de la clase fpdf para que herede todas sus variables y funciones
     class Pdf extends FPDF {
+
         public function __construct() {
             parent::__construct('L','mm','A4');
-        }
+        } 
         // El encabezado del PDF
         public function Header(){
             $cetis = utf8_decode('Secretaría de Educación Pública');
@@ -34,7 +35,7 @@
            $this->SetY(-15);
            $this->SetX(-530);
            $this->SetFont('Times','',7.5);
-           $this->Cell(0,10,'ELIZABETH BRICIO ROBLES',0,0,'C');
+           $this->Cell(0,10,'',0,0,'C');
            //$this->Ln('1');
            $this->SetY(-10);
            $this->SetX(-530);

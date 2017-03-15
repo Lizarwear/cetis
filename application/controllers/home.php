@@ -930,7 +930,12 @@ $q["materias"]=$this->mostrar->inner_materia($id_maestro);
  }
 
  function maestrohorario($id){
-   $this->load->library('pdf');
+  $horario_pdf=$this->mostrar->get_horario_maestro2($id);
+  $mtro=$this->mostrar->get_detalle_maestro($id);
+  $nom = $mtro["nombre"].' '.$mtro["apellido_paterno"].' '.$mtro["apellido_materno"];
+  $cla = $mtro["clave_presupuestal_1"].' '.$mtro["clave_presupuestal_2"].' '.$mtro["clave_presupuestal_3"];
+  //print_r($horario_pdf);die();
+  $this->load->library('pdf');
   //$datosMaestro = $this->obtener_datos->filtrado($id);
   //Creación del PDF
   $this->pdf = new pdf();
@@ -952,9 +957,9 @@ $q["materias"]=$this->mostrar->inner_materia($id_maestro);
   $this->pdf->SetXY(35,$y);
   $this->pdf->Cell(250,8,'',1,'C','0');
   $this->pdf->SetXY(-460,-179);
-  $this->pdf->Cell(0,5,'ELIZABETH BRICIO ROBLESsss',0,0,'C');
+  $this->pdf->Cell(0,5,utf8_decode($nom),0,0,'C');
   $this->pdf->SetXY(-456,-176);
-  $this->pdf->Cell(0,5,'11301 2798 E4623 00 0 0000015',0,0,'C');
+  $this->pdf->Cell(0,5,$cla,0,0,'C');
   $this->pdf->SetXY(-70,-176);
   $this->pdf->Cell(0,5,'AGOSTO 2016 - ENERO 2017',0,0,'C');
   $this->pdf->SetXY(-287,-167);
@@ -966,126 +971,756 @@ $q["materias"]=$this->mostrar->inner_materia($id_maestro);
   $this->pdf->Cell(50,5,'VIERNES',1,'C','C');
   $this->pdf->SetXY(-287,-162);
   $this->pdf->Cell(25,5,'AULA',1,'C','C');
-  $this->pdf->Cell(50,5,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,5,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '07:30:00' && $value->horario_final == '08:20:00'){
+      $aulaL1 = $value->semestre.$value->grupo;
+      $aulaL2 = '';break;        
+    }else{
+      $aulaL1 = '';
+      $aulaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaL1.$aulaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '07:30:00' && $value->horario_final == '08:20:00'){
+      $aulaMa1 = $value->semestre.$value->grupo;
+      $aulaMa2 = '';break;        
+    }else{
+      $aulaMa1 = '';
+      $aulaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMa1.$aulaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '07:30:00' && $value->horario_final == '08:20:00'){
+      $aulaMi1 = $value->semestre.$value->grupo;
+      $aulaMi2 = '';break;        
+    }else{
+      $aulaMi1 = '';
+      $aulaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMi1.$aulaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '07:30:00' && $value->horario_final == '08:20:00'){
+      $aulaJu1 = $value->semestre.$value->grupo;
+      $aulaJu2 = '';break;       
+    }else{
+      $aulaJu1 = '';
+      $aulaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaJu1.$aulaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '07:30:00' && $value->horario_final == '08:20:00'){
+      $aulaVi1 = $value->semestre.$value->grupo;
+      $aulaVi2 = '';break;       
+    }else{
+      $aulaVi1 = '';
+      $aulaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaVi1.$aulaVi2),1,'C','C');
   $this->pdf->SetXY(-287,-157);
   $this->pdf->Cell(25,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,9,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,9,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,9,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,9,utf8_decode(''),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '07:30:00' && $value->horario_final == '08:20:00'){
+      $materiaL1 = $value->NombreMateria;
+      $materiaL2 = '';break;       
+    }else{
+      $materiaL1 = '';
+      $materiaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaL1.$materiaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '07:30:00' && $value->horario_final == '08:20:00'){
+      $materiaMa1 = $value->NombreMateria;
+      $materiaMa2 = '';break;       
+    }else{
+      $materiaMa1 = '';
+      $materiaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMa1.$materiaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '07:30:00' && $value->horario_final == '08:20:00'){
+      $materiaMi1 = $value->NombreMateria;
+      $materiaMi2 = '';break;       
+    }else{
+      $materiaMi1 = '';
+      $materiaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMi1.$materiaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '07:30:00' && $value->horario_final == '08:20:00'){
+      $materiaJu1 = $value->NombreMateria;
+      $materiaJu2 = '';break;       
+    }else{
+      $materiaJu1 = '';
+      $materiaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaJu1.$materiaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '07:30:00' && $value->horario_final == '08:20:00'){
+      $materiaVi1 = $value->NombreMateria;
+      $materiaVi2 = '';break;       
+    }else{
+      $materiaVi1 = '';
+      $materiaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaVi1.$materiaVi2),1,'C','C');
   $this->pdf->SetXY(-537.5,-158.5);
   $this->pdf->Cell(0,9,'7:30',0,0,'C');
   $this->pdf->SetXY(-537.5,-155);
   $this->pdf->Cell(0,9,'8:20',0,0,'C');
   $this->pdf->SetXY(-287,-148);
   $this->pdf->Cell(25,5,'AULA',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '08:20:00' && $value->horario_final == '09:10:00'){
+      $aulaL1 = $value->semestre.$value->grupo;
+      $aulaL2 = '';break;        
+    }else{
+      $aulaL1 = '';
+      $aulaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaL1.$aulaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '08:20:00' && $value->horario_final == '09:10:00'){
+      $aulaMa1 = $value->semestre.$value->grupo;
+      $aulaMa2 = '';break;        
+    }else{
+      $aulaMa1 = '';
+      $aulaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMa1.$aulaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '08:20:00' && $value->horario_final == '09:10:00'){
+      $aulaMi1 = $value->semestre.$value->grupo;
+      $aulaMi2 = '';break;        
+    }else{
+      $aulaMi1 = '';
+      $aulaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMi1.$aulaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '08:20:00' && $value->horario_final == '09:10:00'){
+      $aulaJu1 = $value->semestre.$value->grupo;
+      $aulaJu2 = '';break;       
+    }else{
+      $aulaJu1 = '';
+      $aulaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaJu1.$aulaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '08:20:00' && $value->horario_final == '09:10:00'){
+      $aulaVi1 = $value->semestre.$value->grupo;
+      $aulaVi2 = '';break;       
+    }else{
+      $aulaVi1 = '';
+      $aulaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaVi1.$aulaVi2),1,'C','C');
   $this->pdf->SetXY(-287,-143);
   $this->pdf->Cell(25,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '08:20:00' && $value->horario_final == '09:10:00'){
+      $materiaL1 = $value->NombreMateria;
+      $materiaL2 = '';break;       
+    }else{
+      $materiaL1 = '';
+      $materiaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaL1.$materiaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '08:20:00' && $value->horario_final == '09:10:00'){
+      $materiaMa1 = $value->NombreMateria;
+      $materiaMa2 = '';break;       
+    }else{
+      $materiaMa1 = '';
+      $materiaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMa1.$materiaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '08:20:00' && $value->horario_final == '09:10:00'){
+      $materiaMi1 = $value->NombreMateria;
+      $materiaMi2 = '';break;       
+    }else{
+      $materiaMi1 = '';
+      $materiaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMi1.$materiaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '08:20:00' && $value->horario_final == '09:10:00'){
+      $materiaJu1 = $value->NombreMateria;
+      $materiaJu2 = '';break;       
+    }else{
+      $materiaJu1 = '';
+      $materiaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaJu1.$materiaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '08:20:00' && $value->horario_final == '09:10:00'){
+      $materiaVi1 = $value->NombreMateria;
+      $materiaVi2 = '';break;       
+    }else{
+      $materiaVi1 = '';
+      $materiaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaVi1.$materiaVi2),1,'C','C');
   $this->pdf->SetXY(-537.5,-144.5);
   $this->pdf->Cell(0,9,'8:20',0,0,'C');
   $this->pdf->SetXY(-537.5,-141);
   $this->pdf->Cell(0,9,'9:10',0,0,'C');
   $this->pdf->SetXY(-287,-134);
   $this->pdf->Cell(25,5,'AULA',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '09:10:00' && $value->horario_final == '10:00:00'){
+      $aulaL1 = $value->semestre.$value->grupo;
+      $aulaL2 = '';break;        
+    }else{
+      $aulaL1 = '';
+      $aulaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaL1.$aulaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '09:10:00' && $value->horario_final == '10:00:00'){
+      $aulaMa1 = $value->semestre.$value->grupo;
+      $aulaMa2 = '';break;        
+    }else{
+      $aulaMa1 = '';
+      $aulaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMa1.$aulaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '09:10:00' && $value->horario_final == '10:00:00'){
+      $aulaMi1 = $value->semestre.$value->grupo;
+      $aulaMi2 = '';break;        
+    }else{
+      $aulaMi1 = '';
+      $aulaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMi1.$aulaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '09:10:00' && $value->horario_final == '10:00:00'){
+      $aulaJu1 = $value->semestre.$value->grupo;
+      $aulaJu2 = '';break;       
+    }else{
+      $aulaJu1 = '';
+      $aulaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaJu1.$aulaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '09:10:00' && $value->horario_final == '10:00:00'){
+      $aulaVi1 = $value->semestre.$value->grupo;
+      $aulaVi2 = '';break;       
+    }else{
+      $aulaVi1 = '';
+      $aulaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaVi1.$aulaVi2),1,'C','C');
   $this->pdf->SetXY(-287,-129);
   $this->pdf->Cell(25,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '09:10:00' && $value->horario_final == '10:00:00'){
+      $materiaL1 = $value->NombreMateria;
+      $materiaL2 = '';break;       
+    }else{
+      $materiaL1 = '';
+      $materiaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaL1.$materiaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '09:10:00' && $value->horario_final == '10:00:00'){
+      $materiaMa1 = $value->NombreMateria;
+      $materiaMa2 = '';break;       
+    }else{
+      $materiaMa1 = '';
+      $materiaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMa1.$materiaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '09:10:00' && $value->horario_final == '10:00:00'){
+      $materiaMi1 = $value->NombreMateria;
+      $materiaMi2 = '';break;       
+    }else{
+      $materiaMi1 = '';
+      $materiaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMi1.$materiaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '09:10:00' && $value->horario_final == '10:00:00'){
+      $materiaJu1 = $value->NombreMateria;
+      $materiaJu2 = '';break;       
+    }else{
+      $materiaJu1 = '';
+      $materiaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaJu1.$materiaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '09:10:00' && $value->horario_final == '10:00:00'){
+      $materiaVi1 = $value->NombreMateria;
+      $materiaVi2 = '';break;       
+    }else{
+      $materiaVi1 = '';
+      $materiaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaVi1.$materiaVi2),1,'C','C');
   $this->pdf->SetXY(-537.5,-130.5);
   $this->pdf->Cell(0,9,'9:10',0,0,'C');
   $this->pdf->SetXY(-537.5,-127);
   $this->pdf->Cell(0,9,'10:00',0,0,'C');
   $this->pdf->SetXY(-287,-120);
   $this->pdf->Cell(25,5,'AULA',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '10:30:00' && $value->horario_final == '11:20:00'){
+      $aulaL1 = $value->semestre.$value->grupo;
+      $aulaL2 = '';break;        
+    }else{
+      $aulaL1 = '';
+      $aulaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaL1.$aulaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '10:30:00' && $value->horario_final == '11:20:00'){
+      $aulaMa1 = $value->semestre.$value->grupo;
+      $aulaMa2 = '';break;        
+    }else{
+      $aulaMa1 = '';
+      $aulaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMa1.$aulaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '10:30:00' && $value->horario_final == '11:20:00'){
+      $aulaMi1 = $value->semestre.$value->grupo;
+      $aulaMi2 = '';break;        
+    }else{
+      $aulaMi1 = '';
+      $aulaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMi1.$aulaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '10:30:00' && $value->horario_final == '11:20:00'){
+      $aulaJu1 = $value->semestre.$value->grupo;
+      $aulaJu2 = '';break;       
+    }else{
+      $aulaJu1 = '';
+      $aulaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaJu1.$aulaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '10:30:00' && $value->horario_final == '11:20:00'){
+      $aulaVi1 = $value->semestre.$value->grupo;
+      $aulaVi2 = '';break;       
+    }else{
+      $aulaVi1 = '';
+      $aulaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaVi1.$aulaVi2),1,'C','C');
   $this->pdf->SetXY(-287,-115);
   $this->pdf->Cell(25,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '10:30:00' && $value->horario_final == '11:20:00'){
+      $materiaL1 = $value->NombreMateria;
+      $materiaL2 = '';break;       
+    }else{
+      $materiaL1 = '';
+      $materiaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaL1.$materiaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '10:30:00' && $value->horario_final == '11:20:00'){
+      $materiaMa1 = $value->NombreMateria;
+      $materiaMa2 = '';break;       
+    }else{
+      $materiaMa1 = '';
+      $materiaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMa1.$materiaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '10:30:00' && $value->horario_final == '11:20:00'){
+      $materiaMi1 = $value->NombreMateria;
+      $materiaMi2 = '';break;       
+    }else{
+      $materiaMi1 = '';
+      $materiaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMi1.$materiaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '10:30:00' && $value->horario_final == '11:20:00'){
+      $materiaJu1 = $value->NombreMateria;
+      $materiaJu2 = '';break;       
+    }else{
+      $materiaJu1 = '';
+      $materiaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaJu1.$materiaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '10:30:00' && $value->horario_final == '11:20:00'){
+      $materiaVi1 = $value->NombreMateria;
+      $materiaVi2 = '';break;       
+    }else{
+      $materiaVi1 = '';
+      $materiaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaVi1.$materiaVi2),1,'C','C');
   $this->pdf->SetXY(-537.5,-116.5);
   $this->pdf->Cell(0,9,'10:30',0,0,'C');
   $this->pdf->SetXY(-537.5,-113);
   $this->pdf->Cell(0,9,'11:20',0,0,'C');
   $this->pdf->SetXY(-287,-106);
   $this->pdf->Cell(25,5,'AULA',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '11:20:00' && $value->horario_final == '12:10:00'){
+      $aulaL1 = $value->semestre.$value->grupo;
+      $aulaL2 = '';break;        
+    }else{
+      $aulaL1 = '';
+      $aulaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaL1.$aulaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '11:20:00' && $value->horario_final == '12:10:00'){
+      $aulaMa1 = $value->semestre.$value->grupo;
+      $aulaMa2 = '';break;        
+    }else{
+      $aulaMa1 = '';
+      $aulaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMa1.$aulaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '11:20:00' && $value->horario_final == '12:10:00'){
+      $aulaMi1 = $value->semestre.$value->grupo;
+      $aulaMi2 = '';break;        
+    }else{
+      $aulaMi1 = '';
+      $aulaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMi1.$aulaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '11:20:00' && $value->horario_final == '12:10:00'){
+      $aulaJu1 = $value->semestre.$value->grupo;
+      $aulaJu2 = '';break;       
+    }else{
+      $aulaJu1 = '';
+      $aulaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaJu1.$aulaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '11:20:00' && $value->horario_final == '12:10:00'){
+      $aulaVi1 = $value->semestre.$value->grupo;
+      $aulaVi2 = '';break;       
+    }else{
+      $aulaVi1 = '';
+      $aulaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaVi1.$aulaVi2),1,'C','C');
   $this->pdf->SetXY(-287,-101);
   $this->pdf->Cell(25,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '11:20:00' && $value->horario_final == '12:10:00'){
+      $materiaL1 = $value->NombreMateria;
+      $materiaL2 = '';break;       
+    }else{
+      $materiaL1 = '';
+      $materiaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaL1.$materiaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '11:20:00' && $value->horario_final == '12:10:00'){
+      $materiaMa1 = $value->NombreMateria;
+      $materiaMa2 = '';break;       
+    }else{
+      $materiaMa1 = '';
+      $materiaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMa1.$materiaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '11:20:00' && $value->horario_final == '12:10:00'){
+      $materiaMi1 = $value->NombreMateria;
+      $materiaMi2 = '';break;       
+    }else{
+      $materiaMi1 = '';
+      $materiaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMi1.$materiaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '11:20:00' && $value->horario_final == '12:10:00'){
+      $materiaJu1 = $value->NombreMateria;
+      $materiaJu2 = '';break;       
+    }else{
+      $materiaJu1 = '';
+      $materiaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaJu1.$materiaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '11:20:00' && $value->horario_final == '12:10:00'){
+      $materiaVi1 = $value->NombreMateria;
+      $materiaVi2 = '';break;       
+    }else{
+      $materiaVi1 = '';
+      $materiaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaVi1.$materiaVi2),1,'C','C');
   $this->pdf->SetXY(-537.5,-102.5);
   $this->pdf->Cell(0,9,'11:20',0,0,'C');
   $this->pdf->SetXY(-537.5,-99);
   $this->pdf->Cell(0,9,'12:10',0,0,'C');
   $this->pdf->SetXY(-287,-92);
   $this->pdf->Cell(25,5,'AULA',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '12:10:00' && $value->horario_final == '01:00:00'){
+      $aulaL1 = $value->semestre.$value->grupo;
+      $aulaL2 = '';break;        
+    }else{
+      $aulaL1 = '';
+      $aulaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaL1.$aulaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '12:10:00' && $value->horario_final == '01:00:00'){
+      $aulaMa1 = $value->semestre.$value->grupo;
+      $aulaMa2 = '';break;        
+    }else{
+      $aulaMa1 = '';
+      $aulaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMa1.$aulaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '12:10:00' && $value->horario_final == '01:00:00'){
+      $aulaMi1 = $value->semestre.$value->grupo;
+      $aulaMi2 = '';break;        
+    }else{
+      $aulaMi1 = '';
+      $aulaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMi1.$aulaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '12:10:00' && $value->horario_final == '01:00:00'){
+      $aulaJu1 = $value->semestre.$value->grupo;
+      $aulaJu2 = '';break;       
+    }else{
+      $aulaJu1 = '';
+      $aulaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaJu1.$aulaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '12:10:00' && $value->horario_final == '01:00:00'){
+      $aulaVi1 = $value->semestre.$value->grupo;
+      $aulaVi2 = '';break;       
+    }else{
+      $aulaVi1 = '';
+      $aulaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaVi1.$aulaVi2),1,'C','C');
   $this->pdf->SetXY(-287,-87);
   $this->pdf->Cell(25,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '12:10:00' && $value->horario_final == '01:00:00'){
+      $materiaL1 = $value->NombreMateria;
+      $materiaL2 = '';break;       
+    }else{
+      $materiaL1 = '';
+      $materiaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaL1.$materiaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '12:10:00' && $value->horario_final == '01:00:00'){
+      $materiaMa1 = $value->NombreMateria;
+      $materiaMa2 = '';break;       
+    }else{
+      $materiaMa1 = '';
+      $materiaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMa1.$materiaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '12:10:00' && $value->horario_final == '01:00:00'){
+      $materiaMi1 = $value->NombreMateria;
+      $materiaMi2 = '';break;       
+    }else{
+      $materiaMi1 = '';
+      $materiaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMi1.$materiaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '12:10:00' && $value->horario_final == '01:00:00'){
+      $materiaJu1 = $value->NombreMateria;
+      $materiaJu2 = '';break;       
+    }else{
+      $materiaJu1 = '';
+      $materiaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaJu1.$materiaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '12:10:00' && $value->horario_final == '01:00:00'){
+      $materiaVi1 = $value->NombreMateria;
+      $materiaVi2 = '';break;       
+    }else{
+      $materiaVi1 = '';
+      $materiaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaVi1.$materiaVi2),1,'C','C');
   $this->pdf->SetXY(-537.5,-88.5);
   $this->pdf->Cell(0,9,'12:10',0,0,'C');
   $this->pdf->SetXY(-537.5,-85);
   $this->pdf->Cell(0,9,'13:00',0,0,'C');
   $this->pdf->SetXY(-287,-78);
   $this->pdf->Cell(25,5,'AULA',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
-  $this->pdf->Cell(50,5,'',1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '01:00:00' && $value->horario_final == '01:50:00'){
+      $aulaL1 = $value->semestre.$value->grupo;
+      $aulaL2 = '';break;        
+    }else{
+      $aulaL1 = '';
+      $aulaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaL1.$aulaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '01:00:00' && $value->horario_final == '01:50:00'){
+      $aulaMa1 = $value->semestre.$value->grupo;
+      $aulaMa2 = '';break;        
+    }else{
+      $aulaMa1 = '';
+      $aulaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMa1.$aulaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '01:00:00' && $value->horario_final == '01:50:00'){
+      $aulaMi1 = $value->semestre.$value->grupo;
+      $aulaMi2 = '';break;        
+    }else{
+      $aulaMi1 = '';
+      $aulaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaMi1.$aulaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '01:00:00' && $value->horario_final == '01:50:00'){
+      $aulaJu1 = $value->semestre.$value->grupo;
+      $aulaJu2 = '';break;       
+    }else{
+      $aulaJu1 = '';
+      $aulaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaJu1.$aulaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '01:00:00' && $value->horario_final == '01:50:00'){
+      $aulaVi1 = $value->semestre.$value->grupo;
+      $aulaVi2 = '';break;       
+    }else{
+      $aulaVi1 = '';
+      $aulaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,5,utf8_decode($aulaVi1.$aulaVi2),1,'C','C');
   $this->pdf->SetXY(-287,-73);
   $this->pdf->Cell(25,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,utf8_decode(''),1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
-  $this->pdf->Cell(50,9,'',1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'LUNES' && $value->horario_inicio == '01:00:00' && $value->horario_final == '01:50:00'){
+      $materiaL1 = $value->NombreMateria;
+      $materiaL2 = '';break;       
+    }else{
+      $materiaL1 = '';
+      $materiaL2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaL1.$materiaL2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MARTES' && $value->horario_inicio == '01:00:00' && $value->horario_final == '01:50:00'){
+      $materiaMa1 = $value->NombreMateria;
+      $materiaMa2 = '';break;       
+    }else{
+      $materiaMa1 = '';
+      $materiaMa2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMa1.$materiaMa2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'MIERCOLES' && $value->horario_inicio == '01:00:00' && $value->horario_final == '01:50:00'){
+      $materiaMi1 = $value->NombreMateria;
+      $materiaMi2 = '';break;       
+    }else{
+      $materiaMi1 = '';
+      $materiaMi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaMi1.$materiaMi2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'JUEVES' && $value->horario_inicio == '01:00:00' && $value->horario_final == '01:50:00'){
+      $materiaJu1 = $value->NombreMateria;
+      $materiaJu2 = '';break;       
+    }else{
+      $materiaJu1 = '';
+      $materiaJu2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaJu1.$materiaJu2),1,'C','C');
+  foreach ($horario_pdf as $value) {
+    if($value->dia == 'VIERNES' && $value->horario_inicio == '01:00:00' && $value->horario_final == '01:50:00'){
+      $materiaVi1 = $value->NombreMateria;
+      $materiaVi2 = '';break;       
+    }else{
+      $materiaVi1 = '';
+      $materiaVi2 = '';
+    }
+  }
+  $this->pdf->Cell(50,9,utf8_decode($materiaVi1.$materiaVi2),1,'C','C');
   $this->pdf->SetXY(-537.5,-74.5);
   $this->pdf->Cell(0,9,'13:00',0,0,'C');
   $this->pdf->SetXY(-537.5,-71);
@@ -1125,29 +1760,6 @@ $q["materias"]=$this->mostrar->inner_materia($id_maestro);
   $this->pdf->MultiCell(116,4,utf8_decode('REALIZA MANTENIMIENTO PREVENTIVO Y CORRECTIVO AL MOTOR DE GASOLINA Y DE DIESEL'),1,'L');
   $this->pdf->SetXY(-31.5,-40);
   $this->pdf->Cell(20,8,'8',1,'C','C');
-  //Se define el formato defuente
-  /*$this->pdf->SetFont('Arial','',9);
-  //Color gris tenue de fondo
-  $this->pdf->SetFillColor(229,229,229); 
-  //Color de texto negro
-  $this->pdf->SetTextColor(3,3,3);
-  //Variable bandera para alterar el relleno gris tenue
-  $bandera = false;
-  // La variable $x se utiliza para mostrar un número consecutivo
-    $x = 1;
-    foreach ($materias as $materia) {
-      // se imprime el numero actual y despues se incrementa el valor de $x en uno
-      $this->pdf->Cell(10,5,$x++,'BL',0,'C',$bandera);
-      // Se imprimen los datos de cada alumno
-      $this->pdf->Cell(30,5,$materia->nombre,'B',0,'C',$bandera);
-      $this->pdf->Cell(15,5,$materia->hora,'B',0,'C',$bandera);
-      $this->pdf->Cell(25,5,$materia->tipo,'BR',0,'C',$bandera);
-      //Se agrega un salto de linea
-      $this->pdf->Ln();
-      //Alteramos el valor de la variable bandera
-      $bandera = !$bandera;
-    }
-    */
     /*
      * Se manda el pdf al navegador
      *
