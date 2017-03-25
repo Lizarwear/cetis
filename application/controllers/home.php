@@ -94,10 +94,12 @@ $this->db->select('*');
 $this->db->from('horario_maestro as H');
 $this->db->where('H.horario_inicio',$datos["horario_inicio"]);
 $this->db->where('H.dia',$datos["dia"]);
+$this->db->where('H.grupo',$datos["grupo"]);
 
  
 $query1 = $this->db->get();
 $resultado = $query1->result();
+
 $popo=count($resultado);
    
 // $query=$query->row_array(0);
@@ -709,7 +711,7 @@ $q["materias"]=$this->mostrar->inner_materia($id_maestro);
     $datos["semestre"] = $this->input->post('semestre');
     $datos["id_area"] = $this->input->post('id_area');
 
-    $this->grabar->materias($datos);
+    $this->grabar->materiaaa($datos);
     ?>
         <script type="text/javascript">
           alert("Se ha agregado una nueva materia");
@@ -757,7 +759,7 @@ $q["materias"]=$this->mostrar->inner_materia($id_maestro);
    
 
 
-    $this->grabar->materias($datos);
+    $this->grabar->materia($datos);
     ?>
         <script type="text/javascript">
           alert("Se ha asignado una materia al maestro");

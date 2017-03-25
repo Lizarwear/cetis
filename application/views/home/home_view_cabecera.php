@@ -95,47 +95,7 @@
 							</li>
 						</ul>
 					</li>
-					<li class="topmenu">
-						<a href="http://localhost:8080/cetis/index.php/home/bajas" title="Bajas" style="width:154px;">
-							<span>
-								<span class="glyphicon glyphicon-remove" aria-hidden="true" style="font-size: 22px;">
-									Bajas
-								</span>
-							</span>
-						</a>
-						<ul>
-							<li>
-								<a href="http://localhost:8080/cetis/index.php/home/bajaMaestro" title="Baja Maestro">
-									<span class="glyphicon glyphicon-briefcase" aria-hidden="true" style="font-size: 17px;">
-										Maestro
-									</span>
-								</a>
-							</li>
-							<li>
-								<a href="http://localhost:8080/cetis/index.php/home/bajaGrupo" title="Baja Grupo">
-									<span>
-										<span class="glyphicon glyphicon-education" aria-hidden="true" style="font-size: 17px;">
-											Grupo
-										</span>
-									</span>
-								</a>
-							</li>
-							<li>
-								<a href="http://localhost:8080/cetis/index.php/home/bajaAula" title="Baja Aula">
-									<span class="glyphicon glyphicon-blackboard" aria-hidden="true" style="font-size: 17px;">
-										Aula
-									</span>
-								</a>
-							</li>
-							<li>
-								<a href="http://localhost:8080/cetis/index.php/home/bajaMateria" title="Baja Materia">
-									<span class="glyphicon glyphicon-briefcase" aria-hidden="true" style="font-size: 17px;">
-										Materia
-									</span>
-								</a>
-							</li>
-						</ul>
-					</li>
+					<!--   -->
 					<li class="topmenu">
 						<a href="http://localhost:8080/cetis/index.php/home/editar" title="Editar" style="width:154px;">
 							<span class="glyphicon glyphicon-pencil" aria-hidden="true" style="font-size: 22px;">

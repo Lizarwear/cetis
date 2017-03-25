@@ -14,8 +14,8 @@ Class Grabar extends CI_Model
   $this->db->insert('aula',$datos);
  }
 
- function materia($datos){
-  $this->db->insert('materia',$datos);
+ function materiaaa($datos){
+  $this->db->insert('materias',$datos);
  }
 
 
@@ -24,7 +24,8 @@ Class Grabar extends CI_Model
  }
 
 
- function materias($datos){
+ function materia($datos){
+  
   $this->db->insert('materia_maestro',$datos);
  }
 
